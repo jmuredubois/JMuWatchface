@@ -1,0 +1,125 @@
+{
+    "appKeys": {
+        "KEY_CONDITIONS": 1,
+        "KEY_TEMPERATURE": 0,
+        "KEY_WEATHID": 2
+    },
+    "capabilities": [
+        "location"
+    ],
+    "companyName": "jmuredubois@outlook.com",
+    "longName": "jmuWatch",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/JMuWatch_28.png",
+                "menuIcon": true,
+                "name": "JMUWATCH",
+                "type": "png"
+            },
+            {
+                "file": "images/dust-50.png",
+                "name": "DUST",
+                "type": "png"
+            },
+            {
+                "file": "images/cloud_lighting-50.png",
+                "name": "CLOUD_LIGHTING",
+                "type": "png"
+            },
+            {
+                "file": "images/storm-50.png",
+                "name": "STORM",
+                "type": "png"
+            },
+            {
+                "file": "images/snow_storm-50.png",
+                "name": "SNOW_STORM",
+                "type": "png"
+            },
+            {
+                "file": "images/sleet-50.png",
+                "name": "SLEET",
+                "type": "png"
+            },
+            {
+                "file": "images/fog_night-50.png",
+                "name": "FOG_NIGHT",
+                "type": "png"
+            },
+            {
+                "file": "images/chance_of_storm-50.png",
+                "name": "CHANCE_OF_STORM",
+                "type": "png"
+            },
+            {
+                "file": "images/partly_cloudy_night-50.png",
+                "name": "PARTLY_CLOUDY_NIGHT",
+                "type": "png"
+            },
+            {
+                "file": "images/partly_cloudy_day-50.png",
+                "name": "PARTLY_CLOUDY_DAY",
+                "type": "png"
+            },
+            {
+                "file": "images/hail-50.png",
+                "name": "HAIL",
+                "type": "png"
+            },
+            {
+                "file": "images/snow-50.png",
+                "name": "SNOW",
+                "type": "png"
+            },
+            {
+                "file": "images/little_snow-50.png",
+                "name": "LIGHT_SNOW",
+                "type": "png"
+            },
+            {
+                "file": "images/rain-50.png",
+                "name": "RAIN",
+                "type": "png"
+            },
+            {
+                "file": "images/little_rain-50.png",
+                "name": "LITTLE_RAIN",
+                "type": "png"
+            },
+            {
+                "file": "images/clouds-50.png",
+                "name": "CLOUDS",
+                "type": "png"
+            },
+            {
+                "file": "images/sun-50.png",
+                "name": "SUN",
+                "type": "png"
+            },
+            {
+                "file": "images/tornado-50.png",
+                "name": "TORNADO",
+                "type": "png"
+            },
+            {
+                "file": "images/fog_day-50.png",
+                "name": "FOG_DAY",
+                "type": "png"
+            },
+            {
+                "file": "images/JMu_TOF_Dither.png",
+                "name": "TOF_IMAGE",
+                "type": "png"
+            }
+        ]
+    },
+    "shortName": "jmuWatch",
+    "uuid": "6fbe2aa8-80c3-48c8-aacf-4969ee1288bd",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
