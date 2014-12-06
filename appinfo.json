@@ -1,5 +1,6 @@
 {
     "appKeys": {
+        "KEY_CITY": 3,
         "KEY_CONDITIONS": 1,
         "KEY_TEMPERATURE": 0,
         "KEY_WEATHID": 2
@@ -12,6 +13,11 @@
     "projectType": "native",
     "resources": {
         "media": [
+            {
+                "file": "images/bluetooth-12.png",
+                "name": "BLUETOOTH",
+                "type": "png"
+            },
             {
                 "file": "images/JMuWatch_28.png",
                 "menuIcon": true,

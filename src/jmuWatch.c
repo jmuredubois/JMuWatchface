@@ -3,6 +3,7 @@
 #define KEY_TEMPERATURE 0
 #define KEY_CONDITIONS 1
 #define KEY_WEATHID 2
+#define KEY_CITY 3
 static Window *s_main_window;
 static TextLayer *s_time_layer;
 static GFont s_time_font;
@@ -11,15 +12,31 @@ static GFont s_date_font;
 static GFont s_month_font;
 static GFont s_weather_font;
 static GFont s_temp_font;
+static GFont s_city_font;
 static TextLayer *s_day_layer;
 static TextLayer *s_date_layer;
 static TextLayer *s_month_layer;
 static TextLayer *s_weather_layer;
 static TextLayer *s_temp_layer;
+static TextLayer *s_city_layer;
 static BitmapLayer *s_background_layer;
 static GBitmap *s_background_bitmap;
 static GBitmap *s_weather_bitmap;
 static BitmapLayer *s_weathbmp_layer;
+static GBitmap *s_bt_bitmap;
+static BitmapLayer *s_bt_layer;
+
+void bt_handler(bool connected) {
+  if (connected) {
+    APP_LOG(APP_LOG_LEVEL_INFO, "Phone is connected!");
+    layer_set_hidden(bitmap_layer_get_layer(s_bt_layer),false);
+    vibes_short_pulse();
+  } else {
+    APP_LOG(APP_LOG_LEVEL_INFO, "Phone is not connected!");
+    layer_set_hidden(bitmap_layer_get_layer(s_bt_layer),true);
+    vibes_short_pulse();
+  }
+}
 
 static void update_time() {
   // Get a tm structure
@@ -31,7 +48,6 @@ static void update_time() {
   static char monthBuf[]="Long date to be safe !";
   static char dateBuf[]="32nd";
   static char dayBuf[]="Wednesday or More";
-  static char tempBuf[]="-273.15°C";
 
   // Write the current hours and minutes into the buffer
   if(clock_is_24h_style() == true) {
@@ -50,7 +66,7 @@ static void update_time() {
   text_layer_set_text(s_day_layer, dayBuf);
   strftime(monthBuf, sizeof("Long date to be safe !"), "%B", tick_time);
   text_layer_set_text(s_month_layer, monthBuf);
-  strftime(dateBuf, sizeof("-273.15°C"), "%d", tick_time);
+  strftime(dateBuf, sizeof("32nd"), "%d", tick_time);
   text_layer_set_text(s_date_layer, dateBuf);
 }
 
@@ -72,6 +88,8 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 }
 
 static void main_window_load(Window *window) {
+  // fonds noir
+  window_set_background_color(window, GColorBlack);
   // creation bitmap layer
   s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_TOF_IMAGE);
   s_background_layer = bitmap_layer_create(GRect(0, 56, 144, 112));
@@ -79,7 +97,7 @@ static void main_window_load(Window *window) {
   layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(s_background_layer));
   
   // creation text layer
-  s_time_layer = text_layer_create(GRect(0, 0, 144, 60));
+  s_time_layer = text_layer_create(GRect(0, 05, 144, 50));
   text_layer_set_background_color(s_time_layer, GColorBlack);
   text_layer_set_text_color(s_time_layer, GColorWhite);
   //text_layer_set_text(s_time_layer, "12:34");
@@ -139,6 +157,7 @@ static void main_window_load(Window *window) {
   s_weathbmp_layer = bitmap_layer_create(GRect(0, 88, 50, 50));
   bitmap_layer_set_bitmap(s_weathbmp_layer, s_weather_bitmap);
   layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(s_weathbmp_layer));
+  layer_set_hidden(bitmap_layer_get_layer(s_weathbmp_layer),true);
 
   // ajout temperature
   s_temp_layer = text_layer_create(GRect(5, 88, 139, 34));
@@ -149,11 +168,36 @@ static void main_window_load(Window *window) {
   s_temp_font = fonts_get_system_font(FONT_KEY_BITHAM_30_BLACK);
   text_layer_set_font(s_temp_layer, s_temp_font);
   layer_add_child(window_get_root_layer(s_main_window), text_layer_get_layer(s_temp_layer));
-
+  
+  // ajout affichage ville et heure infos meteo
+  s_city_layer = text_layer_create(GRect(0, 152, 144, 16));
+  text_layer_set_background_color(s_city_layer, GColorClear);
+  text_layer_set_text_color(s_city_layer, GColorBlack);
+  text_layer_set_text_alignment(s_city_layer, GTextAlignmentCenter);
+  s_city_font = fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD);
+  text_layer_set_font(s_city_layer, s_city_font);
+  layer_add_child(window_get_root_layer(s_main_window), text_layer_get_layer(s_city_layer));
+  layer_set_hidden(text_layer_get_layer(s_city_layer),true);
+  
+  // abonnement aux evenements de connection bluetooth
+  bluetooth_connection_service_subscribe(bt_handler);
+  
+  // creation bitmap bluetooth
+  s_bt_bitmap = gbitmap_create_with_resource(RESOURCE_ID_BLUETOOTH);
+  s_bt_layer = bitmap_layer_create(GRect(136, 0, 12, 12));
+  bitmap_layer_set_bitmap(s_bt_layer, s_bt_bitmap);
+  layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(s_bt_layer));
 
 }
 
 static void main_window_unload(Window *window) {
+  //destruction couche image meteo
+  gbitmap_destroy(s_bt_bitmap);
+  bitmap_layer_destroy(s_bt_layer);
+  // resiliation abonnement bluetooth
+  bluetooth_connection_service_unsubscribe();
+  // destruction couche ville
+  text_layer_destroy(s_city_layer);
   // destruction couche meteo
   text_layer_destroy(s_weather_layer);
   // destruction couche temperature
@@ -183,6 +227,8 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   static char temperature_buffer[8];
   static char conditions_buffer[32];
   static char weather_layer_buffer[64];
+  static char city_buffer[64];
+  static char weathdt_buffer[16];
   
   // Lecture premier item
   Tuple *t = dict_read_first(iterator);
@@ -247,9 +293,16 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
             s_weather_bitmap = gbitmap_create_with_resource(RESOURCE_ID_HAIL);
         }
         bitmap_layer_set_bitmap(s_weathbmp_layer, s_weather_bitmap);
+        layer_set_hidden(bitmap_layer_get_layer(s_weathbmp_layer),false);
         break;
       case KEY_CONDITIONS:
         snprintf(conditions_buffer, sizeof(conditions_buffer), "%s", t->value->cstring);
+        break;
+      case KEY_CITY:
+        snprintf(city_buffer, sizeof(city_buffer), "%s", t->value->cstring);
+        text_layer_set_text(s_city_layer, city_buffer);
+        layer_set_hidden(text_layer_get_layer(s_city_layer),false);
+        APP_LOG(APP_LOG_LEVEL_INFO, "Ville meteo : %s", t->value->cstring);
         break;
       default:
         APP_LOG(APP_LOG_LEVEL_ERROR, "Cle %d non reconnue !", (int)t->key);

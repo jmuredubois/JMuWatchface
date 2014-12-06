@@ -32,13 +32,20 @@ function locationSuccess(pos) {
       // conditions id
       var weathid = json.weather[0].id;
       console.log("ID meteo : " + weathid);
-      
+
+      // conditions id
+      var city = json.name;
+      var date = new Date(json.dt);
+      city = city + " - " + date.getHours() + ":" + date.getMinutes();
+      console.log("Ville meteo : " + city);
+
       
         // construction d'un dictionnaire utilisant les cles
   var dictionary = {
     "KEY_TEMPERATURE" : temperature,
     "KEY_CONDITIONS" : conditions,
-    "KEY_WEATHID" : weathid
+    "KEY_WEATHID" : weathid,
+    "KEY_CITY" : city
   };
 
   // envoi vers Pebble
