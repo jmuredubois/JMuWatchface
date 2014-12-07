@@ -35,7 +35,9 @@ function locationSuccess(pos) {
 
       // conditions id
       var city = json.name;
-      var date = new Date(json.dt);
+      var date = new Date(json.dt*1000);
+      console.log("Openweather dt : " + json.dt);
+      console.log("Heure meteo : " + date.toString());
       city = city + " - " + date.getHours() + ":" + date.getMinutes();
       console.log("Ville meteo : " + city);
 

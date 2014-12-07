@@ -124,7 +124,7 @@
     "shortName": "jmuWatch",
     "uuid": "6fbe2aa8-80c3-48c8-aacf-4969ee1288bd",
     "versionCode": 1,
-    "versionLabel": "1.0",
+    "versionLabel": "1.2",
     "watchapp": {
         "watchface": true
     }
