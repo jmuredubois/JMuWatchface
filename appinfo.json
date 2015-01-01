@@ -14,6 +14,136 @@
     "resources": {
         "media": [
             {
+                "file": "images/charge_battery-12.png",
+                "name": "BAT_CHARGE",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/partly_cloudy_night-50.png",
+                "name": "PARTLY_CLOUDY_NIGHT",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/25_percent-12.png",
+                "name": "BAT_25",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/almost_empty-12.png",
+                "name": "BAT_ALMOSTEMPTY",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/almost_full-12.png",
+                "name": "BAT_ALMOSTFULL",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/full_battery-12.png",
+                "name": "BAT_FULL",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/empty_battery-12.png",
+                "name": "BAT_EMPTY",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/tornado-50.png",
+                "name": "TORNADO",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/storm-50.png",
+                "name": "STORM",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/snow_storm-50.png",
+                "name": "SNOW_STORM",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/snow-50.png",
+                "name": "SNOW",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/sleet-50.png",
+                "name": "SLEET",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/rain-50.png",
+                "name": "RAIN",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/partly_cloudy_day-50.png",
+                "name": "PARTLY_CLOUDY_DAY",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/little_snow-50.png",
+                "name": "LITTLE_SNOW",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/little_rain-50.png",
+                "name": "LITTLE_RAIN",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/hail-50.png",
+                "name": "HAIL",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/fog_night-50.png",
+                "name": "FOG_NIGHT",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/fog_day-50.png",
+                "name": "FOG_DAY",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/clouds-50.png",
+                "name": "CLOUDS",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/cloud_lighting-50.png",
+                "name": "CLOUD_LIGHTING",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/chance_of_storm-50.png",
+                "name": "CHANCE_OF_STORM",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/dust-50.png",
+                "name": "DUST",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/sun-50.png",
+                "name": "SUN",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/75_percent-12.png",
+                "name": "BAT_75",
+                "type": "png-trans"
+            },
+            {
+                "file": "images/50_percent-12.png",
+                "name": "BAT_50",
+                "type": "png-trans"
+            },
+            {
                 "file": "images/bluetooth-12.png",
                 "name": "BLUETOOTH",
                 "type": "png"
@@ -22,96 +152,6 @@
                 "file": "images/JMuWatch_28.png",
                 "menuIcon": true,
                 "name": "JMUWATCH",
-                "type": "png"
-            },
-            {
-                "file": "images/dust-50.png",
-                "name": "DUST",
-                "type": "png"
-            },
-            {
-                "file": "images/cloud_lighting-50.png",
-                "name": "CLOUD_LIGHTING",
-                "type": "png"
-            },
-            {
-                "file": "images/storm-50.png",
-                "name": "STORM",
-                "type": "png"
-            },
-            {
-                "file": "images/snow_storm-50.png",
-                "name": "SNOW_STORM",
-                "type": "png"
-            },
-            {
-                "file": "images/sleet-50.png",
-                "name": "SLEET",
-                "type": "png"
-            },
-            {
-                "file": "images/fog_night-50.png",
-                "name": "FOG_NIGHT",
-                "type": "png"
-            },
-            {
-                "file": "images/chance_of_storm-50.png",
-                "name": "CHANCE_OF_STORM",
-                "type": "png"
-            },
-            {
-                "file": "images/partly_cloudy_night-50.png",
-                "name": "PARTLY_CLOUDY_NIGHT",
-                "type": "png"
-            },
-            {
-                "file": "images/partly_cloudy_day-50.png",
-                "name": "PARTLY_CLOUDY_DAY",
-                "type": "png"
-            },
-            {
-                "file": "images/hail-50.png",
-                "name": "HAIL",
-                "type": "png"
-            },
-            {
-                "file": "images/snow-50.png",
-                "name": "SNOW",
-                "type": "png"
-            },
-            {
-                "file": "images/little_snow-50.png",
-                "name": "LIGHT_SNOW",
-                "type": "png"
-            },
-            {
-                "file": "images/rain-50.png",
-                "name": "RAIN",
-                "type": "png"
-            },
-            {
-                "file": "images/little_rain-50.png",
-                "name": "LITTLE_RAIN",
-                "type": "png"
-            },
-            {
-                "file": "images/clouds-50.png",
-                "name": "CLOUDS",
-                "type": "png"
-            },
-            {
-                "file": "images/sun-50.png",
-                "name": "SUN",
-                "type": "png"
-            },
-            {
-                "file": "images/tornado-50.png",
-                "name": "TORNADO",
-                "type": "png"
-            },
-            {
-                "file": "images/fog_day-50.png",
-                "name": "FOG_DAY",
                 "type": "png"
             },
             {
@@ -124,7 +164,7 @@
     "shortName": "jmuWatch",
     "uuid": "6fbe2aa8-80c3-48c8-aacf-4969ee1288bd",
     "versionCode": 1,
-    "versionLabel": "1.2",
+    "versionLabel": "1.3",
     "watchapp": {
         "watchface": true
     }
